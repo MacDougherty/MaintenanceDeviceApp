@@ -13,7 +13,7 @@
         Name
       </th>
       
-        <th colspan='2' style="border: 1px solid black;">
+        <th colspan='1' style="border: 1px solid black;">
           ElectricitySensor
         </th>
       
@@ -42,10 +42,6 @@
             current
           </th>
         
-          <th>
-            port_number
-          </th>
-        
       
         
           <th>
@@ -59,11 +55,11 @@
       
         
           <th>
-            threshold_exceeded
+            port_number
           </th>
         
           <th>
-            port_number
+            threshold_exceeded
           </th>
         
       
@@ -74,7 +70,12 @@
   </thead>
   <tbody>
     <% @maintenance_devices.each do |object| %>
-      <tr id='<%= object.apiotics_instance %>'>
+      <% if object.electricity_sensor.current > 2 || object.magnetic_field_sensor.active == true || object.vibration_sensor.threshold_exceeded == true %>
+        <tr id='<%= object.apiotics_instance %>' style="background-color: #ff0000 !important;">
+      <% else %>
+        <tr id='<%= object.apiotics_instance %>'>
+      <% end %>
+       
         <td>
           <%= object.apiotics_instance %>
         </td>
@@ -83,33 +84,29 @@
         </td>
         
           
-            <td class='maintenance_device-electricity_sensor-current'>
-              <%= object.electricity_sensor.current %>
-            </td>
-          
-            <td class='maintenance_device-electricity_sensor-port_number'>
-              <%= object.electricity_sensor.port_number %>
-            </td>
+        <td class='maintenance_device-electricity_sensor-current'>
+           <%= object.electricity_sensor.current %>
+        </td>
           
         
           
-            <td class='maintenance_device-magnetic_field_sensor-port_number'>
-              <%= object.magnetic_field_sensor.port_number %>
-            </td>
+        <td class='maintenance_device-magnetic_field_sensor-port_number'>
+           <%= object.magnetic_field_sensor.port_number %>
+        </td>
           
-            <td class='maintenance_device-magnetic_field_sensor-active'>
-              <%= object.magnetic_field_sensor.active %>
-            </td>
+        <td class='maintenance_device-magnetic_field_sensor-active'>
+           <%= object.magnetic_field_sensor.active %>
+        </td>
           
         
           
-            <td class='maintenance_device-vibration_sensor-threshold_exceeded'>
-              <%= object.vibration_sensor.threshold_exceeded %>
-            </td>
+        <td class='maintenance_device-vibration_sensor-port_number'>
+          <%= object.vibration_sensor.port_number %>
+        </td>
           
-            <td class='maintenance_device-vibration_sensor-port_number'>
-              <%= object.vibration_sensor.port_number %>
-            </td>
+        <td class='maintenance_device-vibration_sensor-threshold_exceeded'>
+          <%= object.vibration_sensor.threshold_exceeded %>
+        </td>
           
         
         <td>
