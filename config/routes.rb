@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
 		scope module: :maintenance_device do 
 				resources :maintenance_devices
 			end
