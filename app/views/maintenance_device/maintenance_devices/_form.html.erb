@@ -1,0 +1,94 @@
+<%= simple_form_for(@maintenance_device, url: maintenance_device_path(@maintenance_device)) do |form| %>
+  <table>
+    <tr>
+      <th>
+        Id
+      </th>
+      <td>
+        <%= @maintenance_device.apiotics_instance %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Name
+      </th>
+      <td>
+          <%= @maintenance_device.name %>
+      </td>
+    </tr>
+    
+      <tr>
+        <th>
+          ElectricitySensor
+        </th>
+        <%= form.simple_fields_for :electricity_sensor do |fields| %>
+					 <td>
+          	
+							
+							
+								<%= fields.input :current %>
+							
+          	
+							
+							
+	              	<%= fields.input :port_number, collection: ["J5","J6","J7","J8","J9","J10","J11"] %>
+							
+          	
+					</td>
+        <% end %>
+      </tr>
+    
+      <tr>
+        <th>
+          MagneticFieldSensor
+        </th>
+        <%= form.simple_fields_for :magnetic_field_sensor do |fields| %>
+					 <td>
+          	
+							
+							
+	              	<%= fields.input :port_number, collection: ["J5", "J6", "J7", "J8", "J9", "J10", "J11"] %>
+							
+          	
+							
+							
+								<%= fields.input :active %>
+							
+          	
+					</td>
+        <% end %>
+      </tr>
+    
+      <tr>
+        <th>
+          VibrationSensor
+        </th>
+        <%= form.simple_fields_for :vibration_sensor do |fields| %>
+					 <td>
+          	
+							
+							
+								<%= fields.input :threshold_exceeded %>
+							
+          	
+							
+							
+	              	<%= fields.input :port_number, collection: ["J5", "J6", "J7", "J8", "J9", "J10", "J11"] %>
+							
+          	
+					</td>
+        <% end %>
+      </tr>
+    
+      <tr>
+        <th>
+          &nbsp;
+        </th>
+        <td>
+          <div class="actions">
+            <%= form.submit %>
+          </div>
+        </td>
+      </tr>
+  </table>
+<% end %>

@@ -1,0 +1,122 @@
+<p id="notice"><%= notice %></p>
+<h1>
+  MaintenanceDevices
+</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style="border: 1px solid black;">
+        Id
+      </th>
+      <th style="border: 1px solid black;">
+        Name
+      </th>
+      
+        <th colspan='2' style="border: 1px solid black;">
+          ElectricitySensor
+        </th>
+      
+        <th colspan='2' style="border: 1px solid black;">
+          MagneticFieldSensor
+        </th>
+      
+        <th colspan='2' style="border: 1px solid black;">
+          VibrationSensor
+        </th>
+      
+      <th style="border: 1px solid black;">
+        &nbsp;
+      </th>
+    </tr>
+    <tr>
+      <th>
+        &nbsp;
+      </th>
+      <th>
+        &nbsp;
+      </th>
+      
+        
+          <th>
+            current
+          </th>
+        
+          <th>
+            port_number
+          </th>
+        
+      
+        
+          <th>
+            port_number
+          </th>
+        
+          <th>
+            active
+          </th>
+        
+      
+        
+          <th>
+            threshold_exceeded
+          </th>
+        
+          <th>
+            port_number
+          </th>
+        
+      
+      <th>
+        &nbsp;
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @maintenance_devices.each do |object| %>
+      <tr id='<%= object.apiotics_instance %>'>
+        <td>
+          <%= object.apiotics_instance %>
+        </td>
+        <td>
+          <%= object.name %>
+        </td>
+        
+          
+            <td class='maintenance_device-electricity_sensor-current'>
+              <%= object.electricity_sensor.current %>
+            </td>
+          
+            <td class='maintenance_device-electricity_sensor-port_number'>
+              <%= object.electricity_sensor.port_number %>
+            </td>
+          
+        
+          
+            <td class='maintenance_device-magnetic_field_sensor-port_number'>
+              <%= object.magnetic_field_sensor.port_number %>
+            </td>
+          
+            <td class='maintenance_device-magnetic_field_sensor-active'>
+              <%= object.magnetic_field_sensor.active %>
+            </td>
+          
+        
+          
+            <td class='maintenance_device-vibration_sensor-threshold_exceeded'>
+              <%= object.vibration_sensor.threshold_exceeded %>
+            </td>
+          
+            <td class='maintenance_device-vibration_sensor-port_number'>
+              <%= object.vibration_sensor.port_number %>
+            </td>
+          
+        
+        <td>
+          <%= link_to "Edit", edit_maintenance_device_path(object)%>
+          <%= link_to "Show", maintenance_device_path(object) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
